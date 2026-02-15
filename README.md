@@ -2,8 +2,6 @@
 
 Una landing page moderna, performante e completamente responsive realizzata per **Azienda Luce Connessa Impianti**. Il sito presenta i servizi dell'azienda (impianti elettrici, fotovoltaico, climatizzazione e sicurezza) con un design premium orientato alla conversione e alla fiducia del cliente.
 
-![Hero Preview](public/images/hero-bg.png)
-
 ## 🚀 Tecnologie Utilizzate
 
 Il progetto è costruito con le tecnologie web più moderne per garantire velocità, scalabilità e manutenibilità:
