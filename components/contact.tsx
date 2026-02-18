@@ -5,6 +5,7 @@ import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
 import { MapPin, Phone, Mail, Clock, Send, CheckCircle } from "lucide-react"
+import Image from "next/image"
 
 export function Contact() {
   const [submitted, setSubmitted] = useState(false)
@@ -54,8 +55,8 @@ export function Contact() {
                 <div>
                   <p className="font-semibold text-foreground">Sede Operativa</p>
                   <p className="text-sm text-muted-foreground">
-                    Via dell&apos;Innovazione, 42<br />
-                    00100 Roma (RM)
+                    Via Sempione, 35<br />
+                    28865 Crevoladossola (VB)
                   </p>
                 </div>
               </div>
@@ -66,7 +67,7 @@ export function Contact() {
                 </div>
                 <div>
                   <p className="font-semibold text-foreground">Telefono</p>
-                  <p className="text-sm text-muted-foreground">+39 06 1234 5678</p>
+                  <p className="text-sm text-muted-foreground">+39 351 7262779 - 0324 346315</p>
                 </div>
               </div>
 
@@ -77,7 +78,7 @@ export function Contact() {
                 <div>
                   <p className="font-semibold text-foreground">Email</p>
                   <p className="text-sm text-muted-foreground">
-                    info@luceconnessa.it
+                    amministrazione@luceconnessaimpianti.it
                   </p>
                 </div>
               </div>
@@ -89,9 +90,17 @@ export function Contact() {
                 <div>
                   <p className="font-semibold text-foreground">Orari</p>
                   <p className="text-sm text-muted-foreground">
-                    Lun - Ven: 8:00 - 18:00<br />
-                    Sab: 9:00 - 13:00
+                    Lun - Ven: 8:00 - 12:00 / 14:00 - 18:00
                   </p>
+                  <div className="mt-8">
+                    <Image
+                      src="/images/logo-lci.jpg"
+                      alt="Luce Connessa Impianti Logo"
+                      width={200}
+                      height={100}
+                      className="h-auto w-48 rounded-lg"
+                    />
+                  </div>
                 </div>
               </div>
             </div>

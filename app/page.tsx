@@ -11,7 +11,7 @@ export default function Page() {
     <main>
       <Navbar />
       <Hero />
-      <Stats />
+      {/*<Stats />*/}
       <Services />
       <WhyChooseUs />
       <Contact />

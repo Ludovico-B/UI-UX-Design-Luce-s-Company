@@ -39,7 +39,7 @@ export function Hero() {
 
           {/* Subtitle */}
           <p className="mt-6 max-w-xl text-lg leading-relaxed text-[hsl(210,20%,80%)]">
-            Impianti elettrici, fotovoltaico, climatizzazione e videosorveglianza.
+            Impianti elettrici, fotovoltaico, climatizzazione, videosorveglianza e sistemi di allarme.
             Un team di professionisti in costante formazione per offrirti soluzioni
             all&apos;avanguardia.
           </p>
