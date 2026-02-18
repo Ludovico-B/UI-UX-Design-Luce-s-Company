@@ -86,7 +86,7 @@ export function Navbar() {
             ))}
           </nav>
           <div className="mt-4 flex flex-col gap-3">
-            <a href="tel:+390000000000" className="flex items-center gap-2 text-sm font-medium text-foreground">
+            <a href="tel:+393342270299" className="flex items-center gap-2 text-sm font-medium text-foreground">
               <Phone className="h-4 w-4 text-primary" />
               <span>Chiamaci</span>
             </a>
