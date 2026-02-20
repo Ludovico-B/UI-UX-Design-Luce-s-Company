@@ -1,5 +1,6 @@
 import { Zap } from "lucide-react"
 import Link from "next/link"
+import Image from "next/image"
 
 const footerLinks = {
   servizi: [
@@ -28,7 +29,14 @@ export function Footer() {
         <div className="grid gap-12 sm:grid-cols-2 lg:grid-cols-4">
           {/* Brand */}
           <div className="sm:col-span-2 lg:col-span-1">
-            <Link href="/" className="flex items-center gap-2">
+            <Link href="/" className="flex items-center gap-3">
+              <Image
+                src="/images/logo-footer-v2.jpg"
+                alt="Luce Connessa Impianti"
+                width={120}
+                height={40}
+                className="h-10 w-auto rounded"
+              />
               <div className="flex flex-col">
                 <span className="font-heading text-lg font-bold leading-tight text-[hsl(0,0%,100%)]">
                   Luce Connessa Impianti
@@ -36,8 +44,9 @@ export function Footer() {
               </div>
             </Link>
             <p className="mt-4 max-w-xs text-sm leading-relaxed text-[hsl(210,20%,70%)]">
-              Energia, comfort e sicurezza. Soluzioni impiantistiche innovative
-              con un team sempre aggiornato sulle ultime tecnologie.
+              Energia, comfort e sicurezza a Crevoladossola, Val d&apos;Ossola e
+              provincia di Verbania. Soluzioni impiantistiche innovative con un
+              team sempre aggiornato sulle ultime tecnologie.
             </p>
           </div>
 

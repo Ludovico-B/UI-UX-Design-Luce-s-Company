@@ -39,7 +39,8 @@ export function Hero() {
 
           {/* Subtitle */}
           <p className="mt-6 max-w-xl text-lg leading-relaxed text-[hsl(210,20%,80%)]">
-            Impianti elettrici, fotovoltaico, climatizzazione, videosorveglianza e sistemi di allarme.
+            Impianti elettrici, fotovoltaico, climatizzazione, videosorveglianza e sistemi di allarme
+            a Crevoladossola, in Val d&apos;Ossola e provincia di Verbania.
             Un team di professionisti in costante formazione per offrirti soluzioni
             all&apos;avanguardia.
           </p>

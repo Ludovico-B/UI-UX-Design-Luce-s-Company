@@ -1,62 +1,44 @@
-"use client"
+import Image from "next/image"
 
-import { useEffect, useRef, useState } from "react"
-
-const stats = [
-  { value: 500, suffix: "+", label: "Impianti Realizzati" },
-  { value: 15, suffix: "+", label: "Anni di Esperienza" },
-  { value: 98, suffix: "%", label: "Clienti Soddisfatti" },
-  { value: 50, suffix: "+", label: "Ore di Formazione/Anno" },
+const brands = [
+  {
+    name: "Samsung",
+    logo: "/images/samsung-logo.jpg",
+    className: "scale-90"
+  },
+  {
+    name: "Vimar",
+    logo: "/images/vimar-logo.png",
+    className: "scale-150"
+  },
+  {
+    name: "Solax Power",
+    logo: "/images/solax-logo.png",
+    className: "scale-150"
+  },
 ]
-
-function AnimatedCounter({ target, suffix }: { target: number; suffix: string }) {
-  const [count, setCount] = useState(0)
-  const ref = useRef<HTMLSpanElement>(null)
-  const [hasAnimated, setHasAnimated] = useState(false)
-
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting && !hasAnimated) {
-          setHasAnimated(true)
-          let current = 0
-          const increment = target / 60
-          const timer = setInterval(() => {
-            current += increment
-            if (current >= target) {
-              setCount(target)
-              clearInterval(timer)
-            } else {
-              setCount(Math.floor(current))
-            }
-          }, 20)
-        }
-      },
-      { threshold: 0.3 }
-    )
-
-    if (ref.current) observer.observe(ref.current)
-    return () => observer.disconnect()
-  }, [target, hasAnimated])
-
-  return (
-    <span ref={ref} className="font-heading text-4xl font-bold text-primary sm:text-5xl">
-      {count}{suffix}
-    </span>
-  )
-}
 
 export function Stats() {
   return (
     <section className="border-y border-border bg-background py-16">
       <div className="mx-auto max-w-7xl px-6">
-        <div className="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-4">
-          {stats.map((stat) => (
-            <div key={stat.label} className="text-center">
-              <AnimatedCounter target={stat.value} suffix={stat.suffix} />
-              <p className="mt-2 text-sm font-medium text-muted-foreground">
-                {stat.label}
-              </p>
+        <h3 className="mb-12 text-center text-sm font-semibold uppercase tracking-widest text-secondary">
+          I Nostri Brand principali
+        </h3>
+        <div className="grid grid-cols-1 items-center justify-items-center gap-12 sm:grid-cols-3">
+          {brands.map((brand) => (
+            <div
+              key={brand.name}
+              className="relative flex h-20 w-full items-center justify-center grayscale transition-all hover:grayscale-0"
+            >
+              <div className={`relative h-full w-48 transition-transform duration-300 ${brand.className}`}>
+                <Image
+                  src={brand.logo}
+                  alt={`${brand.name} logo`}
+                  fill
+                  className="object-contain"
+                />
+              </div>
             </div>
           ))}
         </div>

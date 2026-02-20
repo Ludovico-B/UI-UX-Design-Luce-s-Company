@@ -112,6 +112,10 @@ export function WhyChooseUs() {
                 <BadgeCheck className="h-5 w-5" />
                 DM 37/08
               </div>
+              <div className="flex items-center gap-2 rounded-lg bg-primary-foreground/15 px-4 py-2 text-sm font-semibold text-primary-foreground">
+                <BadgeCheck className="h-5 w-5" />
+                F-GAS
+              </div>
             </div>
           </div>
         </div>

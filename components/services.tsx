@@ -1,5 +1,5 @@
 import Image from "next/image"
-import { Zap, Sun, Wind, Shield, Camera, ArrowRight } from "lucide-react"
+import { Zap, Sun, Wind, Shield, Camera, ArrowRight, Tv, Cable } from "lucide-react"
 
 const services = [
   {
@@ -30,7 +30,7 @@ const services = [
     icon: Shield,
     title: "Sistemi di Sicurezza",
     description:
-      "Allarmi antintrusione, sensori perimetrali e sistemi di controllo accessi per proteggere casa e azienda 24 ore su 24.",
+      "Allarmi antintrusione, sensori perimetrali e sistemi di controllo accessi per proteggere la tua casa e la tua azienda.",
     image: "/images/security.png",
     imageAlt: "Sistema di sicurezza e allarme",
   },
@@ -39,8 +39,24 @@ const services = [
     title: "Videosorveglianza",
     description:
       "Telecamere IP ad alta definizione, registrazione cloud e accesso remoto da smartphone per un controllo totale.",
-    image: "/images/security.png",
-    imageAlt: "Telecamera di videosorveglianza HD",
+    image: "/images/surveillance.png",
+    imageAlt: "Telecamera di videosorveglianza professionale HD",
+  },
+  {
+    icon: Tv,
+    title: "Impianti TV-SAT",
+    description:
+      "Installazione e manutenzione di impianti satellitari e digitali terrestri per una ricezione perfetta in ogni ambiente.",
+    image: "/images/tv-sat.png",
+    imageAlt: "Installazione parabola e impianti TV",
+  },
+  {
+    icon: Cable,
+    title: "Automatizzazione Cancelli",
+    description:
+      "Soluzioni moderne per l'automazione di cancelli, basculanti e barriere, per la massima comodità e sicurezza.",
+    image: "/images/gate-automation.png",
+    imageAlt: "Sistema di automazione per cancelli",
   },
 ]
 

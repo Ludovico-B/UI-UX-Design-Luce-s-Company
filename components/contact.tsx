@@ -4,15 +4,35 @@ import { useState } from "react"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
-import { MapPin, Phone, Mail, Clock, Send, CheckCircle } from "lucide-react"
+import { MapPin, Phone, Mail, Clock, Send, CheckCircle, MessageCircle, Facebook, Instagram, Loader2 } from "lucide-react"
 import Image from "next/image"
+import { sendContactEmail } from "@/app/actions"
 
 export function Contact() {
+  const [isSubmitting, setIsSubmitting] = useState(false)
   const [submitted, setSubmitted] = useState(false)
+  const [error, setError] = useState<string | null>(null)
 
-  function handleSubmit(e: React.FormEvent) {
+  async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault()
-    setSubmitted(true)
+    setIsSubmitting(true)
+    setError(null)
+
+    const formData = new FormData(e.currentTarget)
+
+    try {
+      const result = await sendContactEmail(formData)
+
+      if (result.success) {
+        setSubmitted(true)
+      } else {
+        setError(result.error || "Errore nell'invio del messaggio. Riprova più tardi.")
+      }
+    } catch (err) {
+      setError("Si è verificato un errore imprevisto. Riprova più tardi.")
+    } finally {
+      setIsSubmitting(false)
+    }
   }
 
   return (
@@ -43,7 +63,8 @@ export function Contact() {
                 Informazioni di Contatto
               </h3>
               <p className="mt-2 text-sm text-muted-foreground">
-                Siamo a tua disposizione per qualsiasi informazione o richiesta.
+                Siamo a Crevoladossola e operiamo in tutta la Val d&apos;Ossola e
+                provincia di Verbania. Contattaci per qualsiasi informazione.
               </p>
             </div>
 
@@ -67,7 +88,19 @@ export function Contact() {
                 </div>
                 <div>
                   <p className="font-semibold text-foreground">Telefono</p>
-                  <p className="text-sm text-muted-foreground">+39 351 7262779 - 0324 346315</p>
+                  <p className="text-sm text-muted-foreground">+39 0324 346315</p>
+                </div>
+              </div>
+
+              <div className="flex items-start gap-4">
+                <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-primary/10">
+                  <MessageCircle className="h-5 w-5 text-primary" />
+                </div>
+                <div>
+                  <p className="font-semibold text-foreground">WhatsApp</p>
+                  <p className="text-sm text-muted-foreground">
+                    +39 351 7262779
+                  </p>
                 </div>
               </div>
 
@@ -84,23 +117,58 @@ export function Contact() {
               </div>
 
               <div className="flex items-start gap-4">
+                <a
+                  href="https://www.instagram.com"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-primary/10 hover:bg-primary/20 transition-colors"
+                >
+                  <Instagram className="h-5 w-5 text-primary" />
+                </a>
+                <div>
+                  <p className="font-semibold text-foreground">Instagram</p>
+                  <a
+                    href="https://www.instagram.com"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-sm text-muted-foreground hover:text-primary transition-colors"
+                  >
+                    @luceconnessaimpianti
+                  </a>
+                </div>
+              </div>
+
+              <div className="flex items-start gap-4">
+                <a
+                  href="https://www.facebook.com"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-primary/10 hover:bg-primary/20 transition-colors"
+                >
+                  <Facebook className="h-5 w-5 text-primary" />
+                </a>
+                <div>
+                  <p className="font-semibold text-foreground">Facebook</p>
+                  <a
+                    href="https://www.facebook.com"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-sm text-muted-foreground hover:text-primary transition-colors"
+                  >
+                    @luceconnessaimpianti
+                  </a>
+                </div>
+              </div>
+
+              <div className="flex items-start gap-4">
                 <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-primary/10">
                   <Clock className="h-5 w-5 text-primary" />
                 </div>
                 <div>
-                  <p className="font-semibold text-foreground">Orari</p>
+                  <p className="font-semibold text-foreground">Orari di Apertura</p>
                   <p className="text-sm text-muted-foreground">
-                    Lun - Ven: 8:00 - 12:00 / 14:00 - 18:00
+                    Lunedì - Venerdì: 8:00 - 12:00 / 13:30 - 17:30
                   </p>
-                  <div className="mt-8">
-                    <Image
-                      src="/images/logo-lci.jpg"
-                      alt="Luce Connessa Impianti Logo"
-                      width={200}
-                      height={100}
-                      className="h-auto w-48 rounded-lg"
-                    />
-                  </div>
                 </div>
               </div>
             </div>
@@ -113,12 +181,14 @@ export function Contact() {
                 <div className="mb-4 flex h-16 w-16 items-center justify-center rounded-full bg-primary/10">
                   <CheckCircle className="h-8 w-8 text-primary" />
                 </div>
+
                 <h3 className="font-heading text-2xl font-bold text-card-foreground">
                   Richiesta Inviata!
                 </h3>
                 <p className="mt-2 max-w-sm text-muted-foreground">
                   Grazie per averci contattato. Ti risponderemo entro 24 ore lavorative.
                 </p>
+
                 <Button
                   onClick={() => setSubmitted(false)}
                   variant="outline"
@@ -126,14 +196,29 @@ export function Contact() {
                 >
                   Invia un&apos;altra richiesta
                 </Button>
+                <div className="mt-8 mb-4">
+                  <Image
+                    src="/images/logo-lci.jpg"
+                    alt="Logo Luce Connessa Impianti"
+                    width={180}
+                    height={60}
+                    className="h-auto w-auto rounded-lg shadow-sm"
+                  />
+                </div>
               </div>
             ) : (
               <form onSubmit={handleSubmit} className="space-y-6">
+                {error && (
+                  <div className="p-4 rounded-lg bg-destructive/10 text-destructive text-sm font-medium">
+                    {error}
+                  </div>
+                )}
                 <div className="grid gap-6 sm:grid-cols-2">
                   <div className="space-y-2">
                     <Label htmlFor="nome" className="text-card-foreground">Nome *</Label>
                     <Input
                       id="nome"
+                      name="nome"
                       placeholder="Mario"
                       required
                       className="bg-background"
@@ -143,6 +228,7 @@ export function Contact() {
                     <Label htmlFor="cognome" className="text-card-foreground">Cognome *</Label>
                     <Input
                       id="cognome"
+                      name="cognome"
                       placeholder="Rossi"
                       required
                       className="bg-background"
@@ -155,6 +241,7 @@ export function Contact() {
                     <Label htmlFor="email" className="text-card-foreground">Email *</Label>
                     <Input
                       id="email"
+                      name="email"
                       type="email"
                       placeholder="mario@esempio.it"
                       required
@@ -165,6 +252,7 @@ export function Contact() {
                     <Label htmlFor="telefono" className="text-card-foreground">Telefono</Label>
                     <Input
                       id="telefono"
+                      name="telefono"
                       type="tel"
                       placeholder="+39 333 123 4567"
                       className="bg-background"
@@ -176,18 +264,20 @@ export function Contact() {
                   <Label htmlFor="servizio" className="text-card-foreground">Servizio di Interesse</Label>
                   <select
                     id="servizio"
+                    name="servizio"
                     className="flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring text-foreground"
+                    required
                     defaultValue=""
                   >
                     <option value="" disabled>
                       Seleziona un servizio
                     </option>
-                    <option value="elettrico">Impianti Elettrici</option>
-                    <option value="fotovoltaico">Fotovoltaico</option>
-                    <option value="climatizzazione">Climatizzazione</option>
-                    <option value="sicurezza">Sistemi di Sicurezza</option>
-                    <option value="videosorveglianza">Videosorveglianza</option>
-                    <option value="altro">Altro</option>
+                    <option value="Impianti Elettrici">Impianti Elettrici</option>
+                    <option value="Fotovoltaico">Fotovoltaico</option>
+                    <option value="Climatizzazione">Climatizzazione</option>
+                    <option value="Sistemi di Sicurezza">Sistemi di Sicurezza</option>
+                    <option value="Videosorveglianza">Videosorveglianza</option>
+                    <option value="Altro">Altro</option>
                   </select>
                 </div>
 
@@ -195,6 +285,7 @@ export function Contact() {
                   <Label htmlFor="messaggio" className="text-card-foreground">Messaggio *</Label>
                   <textarea
                     id="messaggio"
+                    name="messaggio"
                     rows={4}
                     placeholder="Descrivi brevemente il tuo progetto o la tua esigenza..."
                     required
@@ -206,9 +297,19 @@ export function Contact() {
                   type="submit"
                   size="lg"
                   className="w-full bg-primary text-primary-foreground hover:bg-primary/90 text-base"
+                  disabled={isSubmitting}
                 >
-                  <Send className="mr-2 h-5 w-5" />
-                  Richiedi Preventivo Gratuito
+                  {isSubmitting ? (
+                    <>
+                      <Loader2 className="mr-2 h-5 w-5 animate-spin" />
+                      Invio in corso...
+                    </>
+                  ) : (
+                    <>
+                      <Send className="mr-2 h-5 w-5" />
+                      Richiedi Preventivo Gratuito
+                    </>
+                  )}
                 </Button>
 
                 <p className="text-center text-xs text-muted-foreground">
