@@ -112,7 +112,7 @@ export function Footer() {
         <div className="mt-12 border-t border-[hsl(215,20%,25%)] pt-8 text-center">
           <p className="text-sm text-[hsl(210,20%,70%)]">
             &copy; {new Date().getFullYear()} Luce Connessa Impianti. Tutti i diritti riservati.
-            P.IVA: 01808380032
+            P.IVA e Registro Imprese: 01808380032
           </p>
         </div>
       </div>

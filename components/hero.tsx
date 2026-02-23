@@ -21,13 +21,6 @@ export function Hero() {
       {/* Content */}
       <div className="relative mx-auto flex min-h-screen max-w-7xl flex-col justify-center px-6 pt-24 pb-16">
         <div className="max-w-2xl">
-          {/* Badge */}
-          <div className="mb-6 inline-flex items-center gap-2 rounded-full border border-primary/30 bg-primary/10 px-4 py-2 backdrop-blur-sm">
-            <GraduationCap className="h-4 w-4 text-[hsl(35,100%,50%)]" />
-            <span className="text-sm font-medium text-[hsl(0,0%,100%)]">
-              Team sempre aggiornato sulle ultime tecnologie
-            </span>
-          </div>
 
           {/* Heading */}
           <h1 className="font-heading text-3xl font-bold leading-tight text-[hsl(0,0%,100%)] sm:text-5xl lg:text-6xl">
@@ -66,7 +59,7 @@ export function Hero() {
               </div>
               <div className="flex flex-col">
                 <span className="text-sm font-semibold text-[hsl(0,0%,100%)]">Certificati</span>
-                <span className="text-xs text-[hsl(210,20%,80%)]">Norma CEI</span>
+                <span className="text-xs text-[hsl(210,20%,80%)]">F-Gas</span>
               </div>
             </div>
             <div className="flex items-center gap-2">
