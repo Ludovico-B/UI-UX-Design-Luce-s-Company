@@ -38,6 +38,10 @@ export const metadata: Metadata = {
   },
   robots: { index: true, follow: true },
   alternates: { canonical: 'https://www.luceconnessaimpianti.it' },
+  icons: {
+    icon: '/images/logo-lci.jpg',
+    apple: '/images/logo-lci.jpg',
+  },
 }
 
 export default function RootLayout({

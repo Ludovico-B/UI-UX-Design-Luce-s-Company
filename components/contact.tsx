@@ -140,7 +140,7 @@ export function Contact() {
 
               <div className="flex items-start gap-4">
                 <a
-                  href="https://www.facebook.com"
+                  href="https://www.facebook.com/profile.php?id=61581322435428&sk=about"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-primary/10 hover:bg-primary/20 transition-colors"
@@ -150,7 +150,7 @@ export function Contact() {
                 <div>
                   <p className="font-semibold text-foreground">Facebook</p>
                   <a
-                    href="https://www.facebook.com"
+                    href="https://www.facebook.com/profile.php?id=61581322435428&sk=about"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="text-sm text-muted-foreground hover:text-primary transition-colors"
